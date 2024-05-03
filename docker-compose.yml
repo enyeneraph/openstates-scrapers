@@ -14,8 +14,6 @@ services:
   scrape:
     build:
       context: .
-      no_cache: true
-      pull: true
     environment:
       - AR_FTP_USER
       - AR_FTP_PASSWORD

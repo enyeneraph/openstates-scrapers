@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "openstates-scrapers"
+name = "openstates-scrapers-1"
 version = "2022.7"
 description = ""
 authors = ["James Turk <dev@jamesturk.net>"]

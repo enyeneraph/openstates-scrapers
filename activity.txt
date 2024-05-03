@@ -1,0 +1,6 @@
+docker run  -v .:/opt/openstates/openstates/ -it openstates-scraper:v1.0 ca bills --fastmode --scrape
+
+
+
+Running scraper_next
+ny failed
