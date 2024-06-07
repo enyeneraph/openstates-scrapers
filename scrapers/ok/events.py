@@ -51,7 +51,8 @@ class OKEventScraper(Scraper):
         yield from self.scrape_page(start, end)
 
     def scrape_senate(self):
-        url = "https://oksenate.gov/committee-meetings"
+        # url = "https://oksenate.gov/committee-meetings"
+        url = "https://accessible.oksenate.gov/committee-meetings"
         page = lxml.html.fromstring(self.get(url).content)
         page.make_links_absolute(url)
 
@@ -70,9 +71,12 @@ class OKEventScraper(Scraper):
         page.make_links_absolute(url)
 
         title = page.xpath("//span[contains(@class,'field--name-title')]/text()")[0]
-        location = page.xpath("//a[contains(@class,'events_custom_timetable')]/text()")[
-            0
-        ]
+        try:
+            location = page.xpath(
+                "//a[contains(@class,'events_custom_timetable')]/text()"
+            )[0]
+        except IndexError:
+            location = "Senate"
 
         title = f"Senate {title}"
         title = re.sub(r"(2ND|3RD|4TH)* REVISED", "", title).strip()
